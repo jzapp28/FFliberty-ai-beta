@@ -1,0 +1,647 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Clean Background */
+body {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background-attachment: fixed;
+}
+
+/* Loading Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoGlow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-logo-glow {
+  animation: logoGlow 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Initial hidden state */
+.animate-on-load {
+  opacity: 0;
+}
+
+/* Staggered delays with more variety */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1.0s; }
+.delay-1200 { animation-delay: 1.2s; }
+.delay-1400 { animation-delay: 1.4s; }
+.delay-1600 { animation-delay: 1.6s; }
+
+/* Enhanced UI elements with backdrop blur */
+.backdrop-enhanced {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 96.1%;
+    --card-foreground: 0 0% 45.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 89.8%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;
+
+    --chart-3: 197 37% 24%;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;
+
+    --accent-blue: 210 100% 97%;
+    --accent-blue-foreground: 210 100% 50%;
+    --accent-blue-border: 210 100% 90%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 14.9%;
+    --card-foreground: 0 0% 63.9%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 14.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --accent-blue: 210 100% 10%;
+    --accent-blue-foreground: 210 100% 80%;
+    --accent-blue-border: 210 100% 25%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+/* Force sidebar to be transparent */
+[data-sidebar="sidebar"] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Override any dark mode sidebar styling */
+.dark [data-sidebar="sidebar"] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure sidebar content is also transparent */
+[data-sidebar="sidebar"] > * {
+  background: transparent !important;
+}
+
+/* Fix sidebar header and content */
+[data-sidebar="sidebar"] [data-sidebar="header"],
+[data-sidebar="sidebar"] [data-sidebar="content"] {
+  background: transparent !important;
+}
+
+
+/* Force light mode text colors for better readability */
+body, html {
+  color: #1f2937 !important; /* Dark grey text */
+}
+
+/* Override any white text */
+* {
+  color: inherit;
+}
+
+/* Ensure all text elements use dark colors */
+p, span, div, h1, h2, h3, h4, h5, h6, a, button, input, textarea {
+  color: #1f2937 !important;
+}
+
+/* Specific overrides for common components */
+.text-white {
+  color: #1f2937 !important;
+}
+
+/* Ensure proper contrast for interactive elements */
+button, a {
+  color: #374151 !important;
+}
+
+/* Make sure placeholder text is visible */
+::placeholder {
+  color: #6b7280 !important;
+}
+
+
+/* Force light mode */
+html {
+  color-scheme: light !important;
+}
+
+/* Override dark mode completely */
+.dark {
+  --background: 0 0% 100% !important;
+  --foreground: 0 0% 3.9% !important;
+  --card: 0 0% 96.1% !important;
+  --card-foreground: 0 0% 45.1% !important;
+  --popover: 0 0% 100% !important;
+  --popover-foreground: 0 0% 3.9% !important;
+  --primary: 0 0% 9% !important;
+  --primary-foreground: 0 0% 98% !important;
+  --secondary: 0 0% 96.1% !important;
+  --secondary-foreground: 0 0% 9% !important;
+  --muted: 0 0% 96.1% !important;
+  --muted-foreground: 0 0% 45.1% !important;
+  --accent: 0 0% 96.1% !important;
+  --accent-foreground: 0 0% 9% !important;
+}
+
+
+/* Ensure sidebar stays fixed */
+[data-sidebar="sidebar"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100vh !important;
+}
+
+
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  /* Prevent zoom on input focus for iOS and fix viewport */
+  input, textarea, select {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
+  
+  /* Fix viewport zoom and centering */
+  html {
+    -webkit-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Hide sidebar on mobile by default */
+  [data-sidebar="sidebar"] {
+    display: none !important;
+  }
+  
+  /* Hide sidebar container on mobile */
+  .hidden.md\:block {
+    display: none !important;
+  }
+  
+  /* Ensure banner is visible on mobile */
+  .liberty-banner {
+    display: block !important;
+    position: relative !important;
+    z-index: 50 !important;
+    width: 100% !important;
+  }
+  
+  /* Fix main content layout for mobile */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Fix chat messages container for mobile */
+  .chat-messages {
+    padding-top: 60px !important;
+    padding-bottom: 120px !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Ensure chat panel stays at bottom */
+  .chat-panel {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 12px !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Mobile-friendly touch targets */
+  button, a, [role="button"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    touch-action: manipulation !important;
+  }
+  
+  /* Mobile input area */
+  .chat-input-container {
+    padding: 16px 12px !important;
+    gap: 8px !important;
+  }
+  
+  /* Mobile mode buttons */
+  .mode-buttons {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  .mode-button {
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+  }
+  
+  /* Mobile textarea */
+  textarea {
+    font-size: 16px !important;
+    padding: 12px !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Mobile logo */
+  .logo-mobile {
+    height: 3rem !important;
+    margin-top: 20px !important;
+  }
+  
+  /* Mobile header adjustments */
+  header {
+    padding: 8px 12px !important;
+  }
+  
+  /* Mobile banner */
+  .liberty-banner {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Mobile scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px !important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 2px !important;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  /* Extra small mobile adjustments */
+  .chat-input-container {
+    padding: 12px 8px !important;
+  }
+  
+  .mode-button {
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+  }
+  
+  /* Compact mode buttons for very small screens */
+  .mode-buttons-compact .mode-button {
+    padding: 8px !important;
+    min-width: 44px !important;
+  }
+  
+  /* Hide text, show only icons on very small screens */
+  .mode-button-text {
+    display: none !important;
+  }
+  
+  .mode-button-icon {
+    display: block !important;
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Adjust for landscape mobile */
+  .logo-mobile {
+    height: 2.5rem !important;
+    margin-top: 10px !important;
+  }
+  
+  .chat-input-container {
+    padding: 12px !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch-specific optimizations */
+  button:hover {
+    background-color: initial !important;
+  }
+  
+  button:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
+  }
+  
+  /* Larger touch targets for better accessibility */
+  .touch-target {
+    min-height: 48px !important;
+    min-width: 48px !important;
+  }
+}
+
+/* Safe area support for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(12px, env(safe-area-inset-top)) !important;
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  }
+  
+  .safe-area-left {
+    padding-left: max(12px, env(safe-area-inset-left)) !important;
+  }
+  
+  .safe-area-right {
+    padding-right: max(12px, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Crisp rendering for high DPI displays */
+  * {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+  /* Ensure readability in dark mode on mobile */
+  body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+  }
+  
+  .backdrop-enhanced {
+    background: rgba(40, 40, 40, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Mobile keyboard handling */
+@media (max-width: 768px) {
+  /* Prevent viewport jumping when keyboard appears */
+  .keyboard-adjust {
+    height: 100vh !important;
+    height: 100dvh !important; /* Dynamic viewport height */
+  }
+  
+  /* Ensure input stays visible when keyboard is open */
+  .input-focus-visible {
+    scroll-margin-bottom: 200px !important;
+  }
+}
+
+/* Mobile-specific utility classes */
+.mobile-hidden {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  display: none !important;
+  @media (max-width: 768px) {
+    display: block !important;
+  }
+}
+
+.mobile-flex {
+  @media (max-width: 768px) {
+    display: flex !important;
+  }
+}
+
+/* Mobile text sizing */
+@media (max-width: 768px) {
+  .text-mobile-sm {
+    font-size: 14px !important;
+  }
+  
+  .text-mobile-base {
+    font-size: 16px !important;
+  }
+  
+  .text-mobile-lg {
+    font-size: 18px !important;
+  }
+}
+

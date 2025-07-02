@@ -1,0 +1,27 @@
+/* Force sidebar to be transparent */
+[data-sidebar="sidebar"] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Override any dark mode sidebar styling */
+.dark [data-sidebar="sidebar"] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure sidebar content is also transparent */
+[data-sidebar="sidebar"] > * {
+  background: transparent !important;
+}
+
+/* Fix sidebar header and content */
+[data-sidebar="sidebar"] [data-sidebar="header"],
+[data-sidebar="sidebar"] [data-sidebar="content"] {
+  background: transparent !important;
+}
+
