@@ -1,0 +1,23 @@
+{
+  "models": [
+    {
+      "id": "deepseek-chat",
+      "name": "Normal",
+      "provider": "DeepSeek",
+      "providerId": "deepseek",
+      "enabled": true,
+      "toolCallType": "native",
+      "mode": "normal"
+    },
+    {
+      "id": "deepseek-reasoner",
+      "name": "Reasoning",
+      "provider": "DeepSeek",
+      "providerId": "deepseek",
+      "enabled": true,
+      "toolCallType": "native",
+      "toolCallModel": "deepseek-chat",
+      "mode": "reasoning"
+    }
+  ]
+}
