@@ -46,6 +46,7 @@ export async function handleStreamFinish({
       // Stream the related questions as they are generated
       for await (const partialObject of relatedQuestionsStream.partialObjectStream) {
         if (partialObject && partialObject.items) {
+          // @ts-ignore - TypeScript issue with PartialObject type compatibility
           const streamingAnnotation: JSONValue = {
             type: 'related-questions',
             data: partialObject
