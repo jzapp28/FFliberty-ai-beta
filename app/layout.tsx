@@ -20,7 +20,7 @@ const fontSans = FontSans({
 const title = 'Liberty'
 const description =
   'America\'s AI Platform - 100% Private & Secure, US Hosted, No Censorship.'
-
+image = 'app/opengraph-image.png'
 export const metadata: Metadata = {
   metadataBase: new URL('https://libertyai.us/'),
   title,
