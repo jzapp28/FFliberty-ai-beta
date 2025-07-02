@@ -22,7 +22,7 @@ const description =
   'America\'s AI Platform - 100% Private & Secure, US Hosted, No Censorship.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://morphic.sh'),
+  metadataBase: new URL('https://libertyai.us/'),
   title,
   description,
   icons: {
